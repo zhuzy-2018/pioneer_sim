@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sim_envs"
+version = "0.0.1"
+dependencies = [
+  "gymnasium",
+  "pygame",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = [
+  "easiest_ad_env",
+  "zzy_example_env",
+]
