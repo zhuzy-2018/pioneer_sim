@@ -1,0 +1,4 @@
+gymnasium
+pygame
+grpcio
+grpcio-tools

@@ -1,0 +1,57 @@
+#AD 算法输入输出信息流
+传感器数据:
+  - 相机图像: RGB图像 (H×W×3, uint8) * 6
+  # - LiDAR点云: 点云数据 (N×3/4, float32) [x,y,z,intensity]
+  # - IMU数据: 加速度+角速度 (6×1, float32)
+  # - GPS数据: 经纬度+高度 (3×1, float64)
+  # - 雷达数据: 距离+速度+角度 (M×3, float32)
+
+车辆状态:
+  - 位姿: [x,y,z,roll,pitch,yaw] (6×1, float32)
+  # - 速度: [vx,vy,vz] (3×1, float32)
+  # - 角速度: [wx,wy,wz] (3×1, float32)
+  # - 方向盘角度: steering_angle (1×1, float32)
+  # - 油门/刹车: throttle, brake (2×1, float32)
+
+环境信息:
+  - 时间戳: timestamp (1×1, float64)
+  - 高精地图: 地图数据@高文杰 (格式待定)
+  - 他车位姿: other_vehicle_poses (N×6, float32)
+  # - 天气状态: weather_code (1×1, int32)
+  # - 道路信息: road_type, speed_limit (2×1, int32)
+
+# 控制指令:
+#   - 转向: steering [-1, 1] (float32)
+#   - 油门: throttle [0, 1] (float32) 
+#   - 刹车: brake [0, 1] (float32)
+#   - 档位: gear {-1,0,1,2,3,4,5} (int32)
+
+决策信息:
+  - 规划路径: waypoints (N×3, float32) [x,y,heading]
+  - 目标速度: target_speed (1×1, float32)
+  # - 行为状态: behavior_state (1×1, int32) # 跟车/换道/转弯等
+
+
+#3DGS 算法输入输出信息流
+# 相机参数:# 初始化时固定的，相机内外参等参数
+#   - 相机位姿: camera_pose (4×4, float32) # 变换矩阵
+#   - 相机外参矩阵: extrinsics (4×4, float32) # 变换矩阵
+#   - 内参矩阵: intrinsics (3×3, float32)
+#   - 图像尺寸: image_size (2×1, int32) [width, height]
+
+#输入
+车辆状态:
+  - 位姿: [x,y,z,roll,pitch,yaw] (6×1, float32)
+  - 他车位姿: other_vehicle_poses (N×6, float32) # 其他车辆的位姿
+#输出
+  - 渲染图像: rendered_image (H×W×3, uint8) # 渲染后的图像
+
+
+
+
+#生成模型输入输出信息流
+
+
+
+#世界模型输入输出信息流
+

@@ -1,0 +1,37 @@
+// communications/pioneer_sim.proto
+syntax = "proto3";
+
+package pioneer_sim;
+
+// 仿真服务定义
+service SimulationService {
+    rpc SendObservation(ObservationRequest) returns (PlanResponse);
+    rpc HealthCheck(HealthRequest) returns (HealthResponse);
+}
+
+// 观测数据请求
+message ObservationRequest {
+    string obs_json = 1;        // 观测数据JSON
+    string info_json = 2;       // 环境信息JSON
+    int64 timestamp = 3;        // 时间戳
+    int32 step_count = 4;       // 步数
+}
+
+// 规划响应
+message PlanResponse {
+    string plan_json = 1;       // 规划结果JSON
+    bool success = 2;           // 是否成功
+    string error_message = 3;   // 错误信息
+    double confidence = 4;      // 置信度
+}
+
+// 健康检查
+message HealthRequest {
+    string service_name = 1;
+}
+
+message HealthResponse {
+    bool healthy = 1;
+    string status = 2;
+    string version = 3;
+}
