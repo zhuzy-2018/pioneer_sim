@@ -2,3 +2,7 @@ gymnasium
 pygame
 grpcio
 grpcio-tools
+#sumo requirements
+traci
+eclipse-sumo
+requests

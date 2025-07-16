@@ -1,2 +1,3 @@
 __pycache__/
 communications/protos/
+static_obstacles.json
