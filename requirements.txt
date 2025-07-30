@@ -6,3 +6,6 @@ grpcio-tools
 traci
 eclipse-sumo
 requests
+#visualization requirements
+rerun-sdk
+opencv-python

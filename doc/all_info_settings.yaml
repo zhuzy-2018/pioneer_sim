@@ -8,7 +8,15 @@
 
 车辆状态:
   - 位姿: [x,y,z,roll,pitch,yaw] (6×1, float32)
-  # - 速度: [vx,vy,vz] (3×1, float32)
+  - 速度: [vx,vy,vz] (3×1, float32)
+  - 自车尺寸: vehicle_size (3×1, float32) # [width, length, height]
+
+  - 他车信息: 
+    - 他车位姿: other_vehicle_poses (N×6, float32) # 其他车辆的位姿
+    - 他车尺寸: other_vehicle_sizes (N×3, float32) # 其他车辆的尺寸 [width, length, height]
+    - 他车速度: other_vehicle_speeds (N×3, float32) # 其他车辆的速度 [vx, vy, vz]
+
+  - 终点位姿: goal_pose (6×1, float32) # 目标位置 [x,y,z,roll,pitch,yaw]
   # - 角速度: [wx,wy,wz] (3×1, float32)
   # - 方向盘角度: steering_angle (1×1, float32)
   # - 油门/刹车: throttle, brake (2×1, float32)
@@ -27,8 +35,8 @@
 #   - 档位: gear {-1,0,1,2,3,4,5} (int32)
 
 决策信息:
-  - 规划路径: waypoints (N×3, float32) [x,y,heading]
-  - 目标速度: target_speed (1×1, float32)
+  - 规划路径: waypoints (N×3, float32) [x,y,heading] #radius
+  - 目标速度: target_speed (1×1, float32) # m/s
   # - 行为状态: behavior_state (1×1, int32) # 跟车/换道/转弯等
 
 
@@ -50,6 +58,22 @@
 
 
 #生成模型输入输出信息流
+#输入
+初始化数据:
+  - 地图数据（地图路径）: (string)
+  - 传感器外参（外参类型）: (string)(先锋号、 AION)
+实时数据:
+  - 位姿: [x,y,z,roll,pitch,yaw] (6×1, float32)
+  - 他车信息: 
+    - 他车位姿: other_vehicle_poses (N×6, float32) # 其他车辆的位姿
+    - 他车尺寸: other_vehicle_sizes (N×3, float32) # 其他车辆的尺寸 [width, length, height]
+
+  - 语言控制场景指令: language_command (string) # 语言指令 #TODO:未来需要
+  - 3DGS渲染图像: rendered_image (H×W×3, uint8) # 3DGS渲染后的图像 #TODO:未来需要
+  - Occupancy网格: occupancy_grid (L×W×H, float32) # 占据网格图 #TODO:未来需要
+
+#输出
+  - 生成图像: generated_images (M×H×W×3, uint8) # 生成的图像 (224*400)
 
 
 
