@@ -1,3 +1,3 @@
 [submodule "sumo"]
 	path = sumo
-	url = git@github.com:lswlslp/sumo.git
+	url = http://47.108.82.182/igen_lab/llm_traffic_sim/mcp_sumo.git

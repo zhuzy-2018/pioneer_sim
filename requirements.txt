@@ -7,5 +7,5 @@ traci
 eclipse-sumo
 requests
 #visualization requirements
-rerun-sdk
+rerun-sdk==0.20.3
 opencv-python
